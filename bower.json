@@ -1,0 +1,14 @@
+{
+  "name": "geologie",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "~3.0.3",
+    "jquery": "~1.11.0",
+    "raphael": "~2.1.2",
+    "underscore": "~1.6.0",
+    "raphael.export": "*",
+    "ractive": "~0.4.0",
+    "svn": "svn+http://svgfix.googlecode.com/svn/"
+  },
+  "devDependencies": {}
+}
