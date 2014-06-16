@@ -1,5 +1,5 @@
-var layer_width = 200;
-var width = 205
+var layer_width = 150;
+var width = layer_width + 5;
 var paper = Raphael($("#canvas")[0], width, 10);
 var unit = 50;
 var dom_list = $("#straturi")
@@ -111,7 +111,7 @@ function draw_line(step, ratio, height, current_height, dotted) {
         for (var y = step; y < height; y+=step) {
             var line = paper.path("M0,"+(y+current_height*unit)+"H"+layer_width);
             if (dotted) {
-                line.attr('stroke-dasharray', "--")
+                line.attr('stroke-dasharray', "15, 15")
                 console.log(line)
             }
             console.log(y, height, y+step)
@@ -127,7 +127,7 @@ function draw_line(step, ratio, height, current_height, dotted) {
             x_f = Math.min(x, layer_width)
             var line = paper.path("M"+x1+","+y_f+"L"+x_f+","+y2);
             if (dotted) {
-                line.attr('stroke-dasharray', "--")
+                line.attr('stroke-dasharray', "15,15")
             }
             y += step;
             x += step/ratio;

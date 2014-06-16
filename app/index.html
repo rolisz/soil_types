@@ -22,116 +22,112 @@
         <![endif]-->
 
 
-        <div class="container">
-            <div class="header">
-                <ul class="nav nav-pills pull-right">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                <h3 class="text-muted">Geologie</h3>
-            </div>
-
-            <div id="canvas">
-            </div>
-            <button class="btn btn-primary" id="save">Descarca</button>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <h4>Straturi</h4>
-                    <div id="straturi">
-
-                    </div>
-                    <button class="btn btn-primary" id="add_layer">Adauga strat</button>
-                </div>
-            </div>
-            <div class="footer">
-                <p><span class="glyphicon glyphicon-heart"></span> from the rolisz</p>
-            </div>
+    <div class="container">
+        <div class="header">
+            <ul class="nav nav-pills pull-right">
+                <li class="active"><a href="#main" data-toggle="tab">Home</a></li>
+                <li><a href="#settings" data-toggle="tab">Setari</a></li>
+            </ul>
+            <h3 class="text-muted">Geologie</h3>
         </div>
 
 
-        <!-- build:js scripts/vendor.js -->
-        <!-- bower:js -->
-        <script src="../bower_components/jquery/dist/jquery.js"></script>
-        <script src="../bower_components/raphael/raphael.js"></script>
-        <script src="../bower_components/underscore/underscore.js"></script>
-        <script src="../bower_components/raphael.export/raphael.export.js"></script>
-        <script src="../bower_components/ractive/ractive.js"></script>
-        <!-- endbower -->
-        <!-- endbuild -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="main">
+                        <h4>Straturi</h4>
+                        <div id="canvas"></div>
+                        <button class="btn btn-primary" id="save"><span class="glyphicon glyphicon-download"></span></button>
+                        <div id="straturi"></div>
+                        <button class="btn btn-primary" id="add_layer"><span class="glyphicon glyphicon-plus"></span></button>
+                    </div>
+                    <div class="tab-pane" id="settings">
+                        <h4>Setari</h4>
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p><span class="glyphicon glyphicon-heart"></span> from the rolisz</p>
+        </div>
+    </div>
 
-        <!-- build:js scripts/plugins.js -->
-        <script src="../bower_components/bootstrap/js/affix.js"></script>
-        <script src="../bower_components/bootstrap/js/alert.js"></script>
-        <script src="../bower_components/bootstrap/js/dropdown.js"></script>
-        <script src="../bower_components/bootstrap/js/tooltip.js"></script>
-        <script src="../bower_components/bootstrap/js/modal.js"></script>
-        <script src="../bower_components/bootstrap/js/transition.js"></script>
-        <script src="../bower_components/bootstrap/js/button.js"></script>
-        <script src="../bower_components/bootstrap/js/popover.js"></script>
-        <script src="../bower_components/bootstrap/js/carousel.js"></script>
-        <script src="../bower_components/bootstrap/js/scrollspy.js"></script>
-        <script src="../bower_components/bootstrap/js/collapse.js"></script>
-        <script src="../bower_components/bootstrap/js/tab.js"></script>
-        <!-- endbuild -->
 
-        <script id="layer-template" type="text/ractive">
-            <input type=number class="depth" on-change='redraw' value={{depth}} step="0.1" min="0"/>
-            <select class="layer_type" on-change='change_defaults' value='{{layer_type}}'>
-                <option value="argila">Argila</option>
-                <option value="nisip">Nisip</option>
-                <option value="pietris">Pietris cu nisip</option>
-                <option value="marne">Marne</option>
-                <option value="umpluturi">Umpluturi</option>
-                <option value="praf">Praf</option>
-                <option value="sol_vegetal">Sol vegetal</option>
-            </select>
-            <span class="line1">Linie 1:
-               <input type=checkbox class="enabled" on-change='redraw' checked='{{line1.enabled}}'> 
-               {{#line1.enabled}}
-               Intrerupta: <input type="checkbox" on-change='redraw' class="dotted" checked='{{line1.dotted}}'> 
-               <input type=number step=0.1 value={{line1.ratio}} min=0 on-change='redraw' class="ratio"> 
-               <input type=number step=1 value={{line1.step}} min=0 on-change='redraw' class="step">
-               {{/line1}}
-            </span>
-            <span class="line2">Linie 2:
-               <input type=checkbox class="enabled" on-change='redraw' checked='{{line2.enabled}}'> 
-               {{#line2.enabled}}
-               Intrerupta: <input type="checkbox" class="dotted" on-change='redraw' checked='{{line2.dotted}}'> 
-               <input type=number step=0.1 value={{line2.ratio}} min=0 on-change='redraw' class="ratio"> 
-               <input type=number step=1 value={{line2.step}} min=0 on-change='redraw' class="step">
-               {{/line2}}
-            </span>
-            <span class="dots">
-                Puncte:
-               <input type=checkbox class="enabled" on-change='redraw' checked='{{dots}}'> 
-            </span>
-        </script>
-        <script id="list-template" type="text/ractive">
-            <ul class="strat-list">
-                {{#layers}}
-                    <li>{{>layer}}</li>
-                {{/layers}}
-            </ul>
-        </script>
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/raphael/raphael.js"></script>
+    <script src="../bower_components/underscore/underscore.js"></script>
+    <script src="../bower_components/raphael.export/raphael.export.js"></script>
+    <script src="../bower_components/ractive/ractive.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
 
-        <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="scripts/main.js"></script>
-        <script src="scripts/rgbcolor.js"></script>
-        <script src="scripts/StackBlur.js"></script>
-        <script src="scripts/canvg.js"></script>
-        <script src="scripts/svgfix-0.2.js"></script>
-        <!-- endbuild -->
+
+    <!-- build:js scripts/plugins.js -->
+    <script src="../bower_components/bootstrap/js/affix.js"></script>
+    <script src="../bower_components/bootstrap/js/alert.js"></script>
+    <script src="../bower_components/bootstrap/js/dropdown.js"></script>
+    <script src="../bower_components/bootstrap/js/tooltip.js"></script>
+    <script src="../bower_components/bootstrap/js/modal.js"></script>
+    <script src="../bower_components/bootstrap/js/transition.js"></script>
+    <script src="../bower_components/bootstrap/js/button.js"></script>
+    <script src="../bower_components/bootstrap/js/popover.js"></script>
+    <script src="../bower_components/bootstrap/js/carousel.js"></script>
+    <script src="../bower_components/bootstrap/js/scrollspy.js"></script>
+    <script src="../bower_components/bootstrap/js/collapse.js"></script>
+    <script src="../bower_components/bootstrap/js/tab.js"></script>
+    <!-- endbuild -->
+
+    <script id="layer-template" type="text/ractive">
+        <input type=number class="depth" on-change='redraw' value={{depth}} step="0.1" min="0"/>
+        <select class="layer_type" on-change='change_defaults' value='{{layer_type}}'>
+            <option value="argila">Argila</option>
+            <option value="nisip">Nisip</option>
+            <option value="pietris">Pietris cu nisip</option>
+            <option value="marne">Marne</option>
+            <option value="umpluturi">Umpluturi</option>
+            <option value="praf">Praf</option>
+            <option value="sol_vegetal">Sol vegetal</option>
+        </select>
+        <span class="line1">Linie 1:
+            <input type=checkbox class="enabled" on-change='redraw' checked='{{line1.enabled}}'> 
+            {{#line1.enabled}}
+            Intrerupta: <input type="checkbox" on-change='redraw' class="dotted" checked='{{line1.dotted}}'> 
+            <input type=number step=0.1 value={{line1.ratio}} min=0 on-change='redraw' class="ratio"> 
+            <input type=number step=1 value={{line1.step}} min=0 on-change='redraw' class="step">
+            {{/line1}}
+        </span>
+        <span class="line2">Linie 2:
+            <input type=checkbox class="enabled" on-change='redraw' checked='{{line2.enabled}}'> 
+            {{#line2.enabled}}
+            Intrerupta: <input type="checkbox" class="dotted" on-change='redraw' checked='{{line2.dotted}}'> 
+            <input type=number step=0.1 value={{line2.ratio}} min=0 on-change='redraw' class="ratio"> 
+            <input type=number step=1 value={{line2.step}} min=0 on-change='redraw' class="step">
+            {{/line2}}
+        </span>
+        <span class="dots">
+            Puncte:
+            <input type=checkbox class="enabled" on-change='redraw' checked='{{dots}}'> 
+        </span>
+        <span class="glyphicon glyphicon-minus"></span>
+    </script>
+    <script id="list-template" type="text/ractive">
+        <ul class="strat-list">
+            {{#layers}}
+                <li>{{>layer}}</li>
+            {{/layers}}
+        </ul>
+    </script>
+
+    <!-- build:js({app,.tmp}) scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/rgbcolor.js"></script>
+    <script src="scripts/StackBlur.js"></script>
+    <script src="scripts/canvg.js"></script>
+    <script src="scripts/svgfix-0.2.js"></script>
+    <!-- endbuild -->
 </body>
 </html>
